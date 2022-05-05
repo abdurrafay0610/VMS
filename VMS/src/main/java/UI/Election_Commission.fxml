@@ -8,18 +8,18 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controller">
    <children>
-      <BorderPane prefHeight="516.0" prefWidth="605.0">
-         <left>
-            <Button mnemonicParsing="false" onAction="#Menu_to_Voter" text="Voter" BorderPane.alignment="CENTER" />
-         </left>
+      <BorderPane layoutY="-6.0" prefHeight="419.0" prefWidth="548.0">
          <top>
-            <Button mnemonicParsing="false" onAction="#Menu_to_EC" text="Election Comissioner" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#Start_Election_to_Result" text="Start Election" BorderPane.alignment="CENTER" />
          </top>
          <right>
-            <Button mnemonicParsing="false" onAction="#Menu_to_party" text="Party" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" text="Register party" BorderPane.alignment="CENTER" />
          </right>
+         <left>
+            <Button mnemonicParsing="false" text="Register Voter" BorderPane.alignment="CENTER" />
+         </left>
          <bottom>
-            <Button mnemonicParsing="false" text="Options" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" text="Set Election Details" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
