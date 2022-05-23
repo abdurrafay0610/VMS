@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controller">
+   <children>
+      <Pane prefHeight="401.0" prefWidth="522.0">
+         <children>
+            <TextField fx:id="ec_login_user_name" layoutX="187.0" layoutY="124.0" />
+            <TextField fx:id="ec_login_password" layoutX="187.0" layoutY="164.0" />
+            <Button fx:id="ec_login_login_Button" layoutX="187.0" layoutY="216.0" mnemonicParsing="false" onAction="#ECLogin_to_EC" text="Login" />
+            <Button layoutX="241.0" layoutY="295.0" mnemonicParsing="false" onAction="#Back_to_Menu" text="Back" />
+            <Button fx:id="ec_login_sign_up_Button" layoutX="284.0" layoutY="216.0" mnemonicParsing="false" onAction="#to_ECsignup" text="SignUp" />
+            <Label layoutX="96.0" layoutY="128.0" text="UserName:" />
+            <Label layoutX="96.0" layoutY="168.0" text="Password:" />
+            <Label fx:id="ec_login_label" layoutX="197.0" layoutY="63.0" text="Enter your credidentials:" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

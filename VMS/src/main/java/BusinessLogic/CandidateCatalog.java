@@ -15,5 +15,10 @@ public class CandidateCatalog
 		//populate the candidate list using database
 		candidate_list = OracleDB.getCandidates();
 	}
-
+	//adding candidate to list
+	public void addCandidate(Candidate obj)
+	{
+		CandidateCatalog.candidate_list.add(obj);
+		OracleDB.addCandidate(obj);
+	}
 }

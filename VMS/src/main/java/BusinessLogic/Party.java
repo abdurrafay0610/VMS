@@ -15,6 +15,13 @@ public class Party
 		setName("");
 		setPassword("");
 	}
+	public Party(int p_id,int ph_id,String name,String password)
+	{
+		setP_id(p_id);
+		setPh_id(ph_id);
+		setName(name);
+		setPassword(password);
+	}
 	//getter setter functions
 	public int getP_id() 
 	{

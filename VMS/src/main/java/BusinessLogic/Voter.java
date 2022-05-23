@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import DataBase.OracleDB;
+
 public class Voter 
 {
 	private int id;

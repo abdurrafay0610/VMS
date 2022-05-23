@@ -13,7 +13,7 @@
             <Button mnemonicParsing="false" onAction="#Menu_to_Voter" text="Voter" BorderPane.alignment="CENTER" />
          </left>
          <top>
-            <Button mnemonicParsing="false" onAction="#Menu_to_EC" text="Election Comissioner" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#Menu_to_EClogin" text="Election Comissioner" BorderPane.alignment="CENTER" />
          </top>
          <right>
             <Button mnemonicParsing="false" onAction="#Menu_to_party" text="Party" BorderPane.alignment="CENTER" />

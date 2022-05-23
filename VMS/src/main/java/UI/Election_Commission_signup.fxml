@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="UI.Controller">
+   <children>
+      <Pane prefHeight="397.0" prefWidth="448.0">
+         <children>
+            <TextField fx:id="ec_signup_user_name" layoutX="150.0" layoutY="96.0" />
+            <TextField fx:id="ec_signup_password" layoutX="150.0" layoutY="135.0" />
+            <TextField fx:id="ec_signup_email" layoutX="150.0" layoutY="174.0" />
+            <Label fx:id="ec_signup_label" layoutX="154.0" layoutY="48.0" text="Kindly enter info to signup" />
+            <Label layoutX="59.0" layoutY="100.0" text="Name:" />
+            <Label layoutX="59.0" layoutY="139.0" text="Password:" />
+            <Label layoutX="59.0" layoutY="178.0" text="Email:" />
+            <Button fx:id="ec_signup_sign_up_Button" layoutX="150.0" layoutY="237.0" mnemonicParsing="false" onAction="#ECSignup_to_EC" text="Signup" />
+            <Button fx:id="ec_signup_login_Button" layoutX="247.0" layoutY="237.0" mnemonicParsing="false" onAction="#Menu_to_EClogin" text="Login" />
+            <Button layoutX="204.0" layoutY="290.0" mnemonicParsing="false" onAction="#Back_to_Menu" text="back" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

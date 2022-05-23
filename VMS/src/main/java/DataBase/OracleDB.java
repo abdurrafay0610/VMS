@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import BusinessLogic.Candidate;
 import BusinessLogic.ElectionCommission;
 import BusinessLogic.Party;
+import BusinessLogic.Vote;
 import BusinessLogic.Voter;
 
 public class OracleDB extends PersistanceManager
@@ -31,73 +32,81 @@ public class OracleDB extends PersistanceManager
 			
 		//DataBase Schema
 		Statement stmt = con.createStatement();
-		System.out.println("Dropping schema tables");
-		try
-		{
-			stmt.executeQuery("DROP TABLE party CASCADE CONSTRAINTS");
-			System.out.println("party table dropped");
-		}
-		catch(Exception e)
-		{
-			System.out.println("party table does not exist, so it cannot be dropped");
-		}
-		try
-		{
-			stmt.executeQuery("DROP TABLE voter CASCADE CONSTRAINTS");
-			System.out.println("voter table dropped");
-		}
-		catch(Exception e)
-		{
-			System.out.println("voter table does not exist, so it cannot be dropped");
-		}
-		try
-		{
-			stmt.executeQuery("DROP TABLE vote CASCADE CONSTRAINTS");
-			System.out.println("vote table dropped");
-		}
-		catch(Exception e)
-		{
-			System.out.println("vote table does not exist, so it cannot be dropped");
-		}
-		try
-		{
-			stmt.executeQuery("DROP TABLE candidate CASCADE CONSTRAINTS");
-			System.out.println("candidate table dropped");
-		}
-		catch(Exception e)
-		{
-			System.out.println("candidate table does not exist, so it cannot be dropped");
-		}
 		
-		System.out.println("Creating tables!");
-		try
-		{
-			ResultSet rs;
-			//Voter table
-			stmt.executeQuery("CREATE TABLE voter"
-					+ "(v_id NUMBER(10) PRIMARY KEY,"
-					+ "name VARCHAR(30),"
-					+ "email VARCHAR(30) UNIQUE,"
-					+ "password VARCHAR(30),"
-					+ "ee NUMBER(5))");
-			//Candidate table
-			stmt.executeQuery("CREATE TABLE candidate"
-					+ "(c_id NUMBER(10) PRIMARY KEY,"
-					+ "p_id NUMBER(10))");
-			//Party table
-			stmt.executeQuery("CREATE TABLE party"
-					+ "(p_id NUMBER(10) PRIMARY KEY,"
-					+ "ph_id NUMBER(10),"
-					+ "name VARCHAR(30),"
-					+ "password VARCHAR(30))");
-			
-			System.out.println("DataBase table creation successfull");
-			
-		}
-		catch(Exception e)
-		{
-			System.out.println("*******Problem occured in table creation*******");
-		}
+//		System.out.println("Dropping schema tables");
+//		try
+//		{
+//			stmt.executeQuery("DROP TABLE party CASCADE CONSTRAINTS");
+//			System.out.println("party table dropped");
+//		}
+//		catch(Exception e)
+//		{
+//			System.out.println("party table does not exist, so it cannot be dropped");
+//		}
+//		try
+//		{
+//			stmt.executeQuery("DROP TABLE voter CASCADE CONSTRAINTS");
+//			System.out.println("voter table dropped");
+//		}
+//		catch(Exception e)
+//		{
+//			System.out.println("voter table does not exist, so it cannot be dropped");
+//		}
+//		try
+//		{
+//			stmt.executeQuery("DROP TABLE vote CASCADE CONSTRAINTS");
+//			System.out.println("vote table dropped");
+//		}
+//		catch(Exception e)
+//		{
+//			System.out.println("vote table does not exist, so it cannot be dropped");
+//		}
+//		try
+//		{
+//			stmt.executeQuery("DROP TABLE candidate CASCADE CONSTRAINTS");
+//			System.out.println("candidate table dropped");
+//		}
+//		catch(Exception e)
+//		{
+//			System.out.println("candidate table does not exist, so it cannot be dropped");
+//		}
+//		
+//		System.out.println("Creating tables!");
+//		try
+//		{
+//			ResultSet rs;
+//			//Voter table
+//			stmt.executeQuery("CREATE TABLE voter"
+//					+ "(v_id NUMBER(10) PRIMARY KEY,"
+//					+ "name VARCHAR(30),"
+//					+ "email VARCHAR(30) UNIQUE,"
+//					+ "password VARCHAR(30),"
+//					+ "ee NUMBER(5))");
+//			//Candidate table
+//			stmt.executeQuery("CREATE TABLE candidate"
+//					+ "(c_id NUMBER(10) PRIMARY KEY,"
+//					+ "p_id NUMBER(10))");
+//			//Party table
+//			stmt.executeQuery("CREATE TABLE party"
+//					+ "(p_id NUMBER(10) PRIMARY KEY,"
+//					+ "ph_id NUMBER(10),"
+//					+ "name VARCHAR(30),"
+//					+ "password VARCHAR(30))");
+//			//Vote table
+//			stmt.executeQuery("CREATE TABLE vote"
+//					+ "(v_id NUMBER(10) PRIMARY KEY,"
+//					+ "choice1 NUMBER(10),"
+//					+ "choice2 NUMBER(10),"
+//					+ "choice3 NUMBER(10),"
+//					+ "choice4 NUMBER(10),"
+//					+ "choice5 NUMBER(10))");
+//			System.out.println("DataBase table creation successfull");
+//			
+//		}
+//		catch(Exception e)
+//		{
+//			System.out.println("*******Problem occured in table creation*******");
+//		}
 	}
 	///////////////////////////////////////////////////////////////
 	////////////////functions to add data/////////////////////////
@@ -157,6 +166,38 @@ public class OracleDB extends PersistanceManager
 		for(int i = 0;i < size;i++)
 		{
 			addCandidate(obj.get(i));
+		}
+	}
+	//add single vote
+	public static void addVote(Vote obj)
+	{
+		try 
+		{	
+			String sql="INSERT INTO vote(v_id,choice1,choice2,choice3,choice4,choice5) VALUES (?,?,?,?,?,?)";
+			PreparedStatement statement=con.prepareStatement(sql);
+			statement.setInt(1,obj.getVoter_id());
+			statement.setInt(2,obj.getChoice1());
+			statement.setInt(3,obj.getChoice2());
+			statement.setInt(4,obj.getChoice3());
+			statement.setInt(5,obj.getChoice4());
+			statement.setInt(6,obj.getChoice5());
+			statement.executeUpdate();
+			
+			System.out.println("vote addittion successfull");
+		}
+		catch(Exception e) 
+		{
+			System.out.println("Vote NOT added");
+		}
+	}
+	//add vote as list
+	public static void addVoteList(ArrayList<Vote> obj)
+	{
+		int size = obj.size();
+		
+		for(int i = 0;i < size;i++)
+		{
+			addVote(obj.get(i));
 		}
 	}
 	//add single voter
@@ -285,6 +326,63 @@ public class OracleDB extends PersistanceManager
 		catch(Exception e)
 		{
 			System.out.println("Failed to get candidate list from database");
+			return null;
+		}
+	}
+	public static ArrayList<Vote> getVotes() throws ClassNotFoundException, SQLException
+	{
+		try
+		{
+			ArrayList<Vote>temp=new ArrayList<Vote>();
+			
+			Statement smt=con.createStatement();
+			ResultSet rs=smt.executeQuery("select * from vote");
+		
+			while(rs.next()) 
+			{
+				int id=rs.getInt("v_id");
+				int c1=rs.getInt("choice1");
+				int c2=rs.getInt("choice2");
+				int c3=rs.getInt("choice3");
+				int c4=rs.getInt("choice4");
+				int c5=rs.getInt("choice5");
+				
+				temp.add(new Vote(id,c1,c2,c3,c4,c5));
+			}
+			System.out.println("Vote list get successfull");
+			return temp;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Failed to get vote list from database");
+			return null;
+		}
+	}
+	public static ArrayList<Party> getParty() throws ClassNotFoundException, SQLException
+	{
+		try
+		{
+			ArrayList<Party>temp=new ArrayList<Party>();
+			
+			Statement smt=con.createStatement();
+			ResultSet rs=smt.executeQuery("select * from party");
+		
+			while(rs.next()) 
+			{
+				int pid=rs.getInt("p_id");
+				int phid=rs.getInt("ph_id");
+				String name=rs.getString("name");
+				String password=rs.getString("password");
+				
+				
+				temp.add(new Party(pid,phid,name,password));
+			}
+			System.out.println("Party list get successfull");
+			return temp;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Failed to get Party list from database");
 			return null;
 		}
 	}

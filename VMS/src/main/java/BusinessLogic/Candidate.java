@@ -1,5 +1,7 @@
 package BusinessLogic;
 
+import DataBase.OracleDB;
+
 public class Candidate extends Voter
 {
 	private int party;

@@ -15,5 +15,26 @@ public class VoterCatalog
 		//populate the voter list using database
 		voter_list = OracleDB.getVoters();
 	}
-
+	
+	//adding voter to database and list
+	public static void addVoter(Voter obj)
+	{
+		VoterCatalog.voter_list.add(obj);
+		OracleDB.addVoter(obj);
+	}
+	public static Voter getAdmin()
+	{
+		for(int i=0;i<voter_list.size();i++)
+		{
+			if(voter_list.get(i).IsEE() == 1)
+			{
+				return voter_list.get(i);
+			}
+			else
+			{
+				return null;
+			}
+		}
+		return null;
+	}
 }

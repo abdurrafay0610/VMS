@@ -19,7 +19,7 @@
             <Button mnemonicParsing="false" text="Register Voter" BorderPane.alignment="CENTER" />
          </left>
          <bottom>
-            <Button mnemonicParsing="false" text="Set Election Details" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#Back_to_Menu" text="Back" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
