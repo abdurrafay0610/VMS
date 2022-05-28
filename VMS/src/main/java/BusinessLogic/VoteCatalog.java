@@ -20,5 +20,6 @@ public class VoteCatalog
 		VoteCatalog.vote_list.add(obj);
 		OracleDB.addVote(obj);
 	}
+	
 
 }

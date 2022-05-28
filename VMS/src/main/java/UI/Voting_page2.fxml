@@ -6,22 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controller">
    <children>
-      <Pane prefHeight="394.0" prefWidth="477.0">
+      <Pane prefHeight="468.0" prefWidth="477.0">
          <children>
-            <TextField layoutX="164.0" layoutY="147.0" />
-            <TextField layoutX="164.0" layoutY="185.0" />
-            <TextField layoutX="164.0" layoutY="225.0" />
-            <TextField layoutX="164.0" layoutY="265.0" />
-            <TextField layoutX="164.0" layoutY="307.0" />
+            <TextField fx:id="voter_first" layoutX="164.0" layoutY="147.0" />
+            <TextField fx:id="voter_second" layoutX="164.0" layoutY="185.0" />
+            <TextField fx:id="voter_third" layoutX="164.0" layoutY="225.0" />
+            <TextField fx:id="voter_fourth" layoutX="164.0" layoutY="265.0" />
+            <TextField fx:id="voter_fifth" layoutX="164.0" layoutY="307.0" />
             <Button layoutX="213.0" layoutY="355.0" mnemonicParsing="false" text="Vote" />
-            <Label layoutX="144.0" layoutY="45.0" prefHeight="68.0" prefWidth="189.0" text="Enter your voting preference:" textAlignment="RIGHT" />
             <Label layoutX="81.0" layoutY="151.0" text="First Choice:" />
             <Label layoutX="81.0" layoutY="189.0" text="Second Choice:" />
             <Label layoutX="81.0" layoutY="229.0" text="Third Choice:" />
             <Label layoutX="81.0" layoutY="269.0" text="Fourth Choice:" />
             <Label layoutX="81.0" layoutY="311.0" text="Fifth Choice:" />
+            <Label fx:id="voter_label" layoutX="223.0" layoutY="29.0" text="Hello!" />
+            <Label fx:id="voter_options_label" layoutX="225.0" layoutY="84.0" text="Label" />
+            <Button layoutX="213.0" layoutY="407.0" mnemonicParsing="false" onAction="#to_Voting_page" text="Back" />
          </children>
       </Pane>
    </children>

@@ -16,7 +16,7 @@
             <Button mnemonicParsing="false" text="Register party" BorderPane.alignment="CENTER" />
          </right>
          <left>
-            <Button mnemonicParsing="false" text="Register Voter" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#to_register_voter" text="Register Voter" BorderPane.alignment="CENTER" />
          </left>
          <bottom>
             <Button mnemonicParsing="false" onAction="#Back_to_Menu" text="Back" BorderPane.alignment="CENTER" />

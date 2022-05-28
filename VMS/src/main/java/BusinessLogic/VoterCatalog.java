@@ -30,9 +30,16 @@ public class VoterCatalog
 			{
 				return voter_list.get(i);
 			}
-			else
+		}
+		return null;
+	}
+	public static Voter getVoter(int cnic)
+	{
+		for(int i=0;i<voter_list.size();i++)
+		{
+			if(voter_list.get(i).getId() == cnic)
 			{
-				return null;
+				return voter_list.get(i);
 			}
 		}
 		return null;
